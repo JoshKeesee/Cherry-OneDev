@@ -74,7 +74,7 @@ function createProject() {
 document.getElementById("bgimage").onchange = (event) => {
   document.getElementById("parallax").checked = false;
   bgFile = URL.createObjectURL(event.target.files[0]);
-  bgimage = '<img src="' + bgFile + '" class="mx-auto inset-0 object-none overflow-visible min-h-screen min-w-screen" />';
+  bgimage = '<img src="' + bgFile + '" class="mx-auto inset-0 min-h-screen w-screen" />';
   createFile();
 }
 
@@ -205,10 +205,10 @@ function bgImageHidden() {
 document.getElementById("parallax").onchange = () => {
   if (document.getElementById("parallax").checked === true) {
     parallax = '<script>function setTranslate(xPos, yPos, element) {element.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";} window.addEventListener("DOMContentLoaded", scrollLoop, false); let xScrollPosition; let yScrollPosition; function scrollLoop() {xScrollPosition = window.pageXOffset; yScrollPosition = window.pageYOffset; setTranslate(0, yScrollPosition * -0.4, document.querySelector("#parallax")); requestAnimationFrame(scrollLoop);}</script>';
-    bgimage = '<img id="parallax" src="' + bgFile + '" class="fixed top-0 mx-auto inset-0 object-none overflow-visible min-h-screen min-w-screen" />';
+    bgimage = '<img id="parallax" src="' + bgFile + '" class="fixed top-0 mx-auto inset-0 min-h-screen w-screen" />';
   } else {
     parallax = '';
-    bgimage = '<img src="' + bgFile + '" class="mx-auto inset-0 object-none overflow-visible min-h-screen min-w-screen" />';
+    bgimage = '<img src="' + bgFile + '" class="mx-auto inset-0 min-h-screen w-screen" />';
   }
   bodyChecked();
   createFile();
@@ -218,9 +218,9 @@ function downloadFile() {
   var bodyContent = '';
   if (bgFile !== '') {
     if (parallax !== '') {
-      bodyContent = '<img id="parallax" src="' + title + '-background.jpg" class="fixed top-0 mx-auto inset-0 object-none overflow-visible min-h-screen min-w-screen" />' + body + parallax;
+      bodyContent = '<img id="parallax" src="' + title + '-background.jpg" class="fixed top-0 mx-auto inset-0 min-h-screen w-screen" />' + body + parallax;
     } else {
-      bodyContent = '<img id="parallax" src="' + title + '-background.jpg" class="mx-auto inset-0 object-none overflow-visible min-h-screen min-w-screen" />' + body;
+      bodyContent = '<img id="parallax" src="' + title + '-background.jpg" class="mx-auto inset-0 min-h-screen w-screen" />' + body;
     }
   }
 
