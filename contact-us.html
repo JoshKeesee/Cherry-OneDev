@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cherry OneDev</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-900">
+  <div id="header"
+    class="text-xl p-4 bg-black backdrop-blur-sm fixed top-0 left-0 right-0 bg-opacity-0 z-20 bg-opacity-80">
+    <div onclick="window.location.href = '/get-started.html'"
+      class="hover:scale-100 scale-90 transition-all duration-300 fixed top-[45px] translate-y-[-50%] right-20 cursor-pointer lg:block md:block hidden">
+      <div
+        class="bg-gradient-to-br from-indigo-500 to-cyan-500 relative inset-0 h-fit bg-cyan p-5 px-7 rounded-xl font-bold w-fit text-xl top-0 left-0 text-center blur-xl animate-pulse">
+        Get Started
+      </div>
+      <div
+        class="bg-gradient-to-br from-indigo-500 to-cyan-500 text-white absolute inset-0 p-4 rounded-xl font-bold select-none w-fit text-xl z-10 h-fit top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] transform w-36 text-center">
+        Get Started
+      </div>
+    </div>
+    <div class="flex">
+      <div class="w-full pr-auto">
+        <img src="/Cherry OneDev Icons/Cherry OneDev-logos_white.png" class="max-h-14 cursor-pointer"
+          onclick="window.location = '/'" />
+      </div>
+      <div id="menuButton"
+        class="pl-auto grid gap-2 hover:gap-3 transition-all duration-300 w-10 my-auto cursor-pointer"
+        onclick="openMenu()">
+        <div class="bg-white rounded-full h-1 w-full"></div>
+        <div class="bg-white rounded-full h-1 w-full"></div>
+        <div class="bg-white rounded-full h-1 w-full"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="menu"
+    class="fixed top-0 bottom-0 -right-full transition-all duration-300 p-4 bg-gray-700 w-fit z-20 text-white bg-opacity-80 backdrop-blur-sm">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="w-12 h-12 cursor-pointer hover:bg-slate-800 hover:text-indigo-500 transition-all rounded-xl"
+      onclick="closeMenu()">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+    <div class="w-full mt-8 grid text-gray-400 text-3xl gap-4">
+      <a href="/get-started.html"
+        class="lg:hidden md:hidden block border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">Get
+        Started</a>
+      <a href="/about-us.html"
+        class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">About
+        Us</a>
+      <a href="/contact-us.html"
+        class="border-b-4 bg-slate-800 text-white border-indigo-500 transition-all cursor-pointer p-2 text-center">Contact
+        Us</a>
+      <a
+        class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">Send
+        a Donation</a>
+    </div>
+  </div>
+  <script src="menu.js"></script>
+</body>
+</html>

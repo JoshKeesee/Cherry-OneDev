@@ -1,0 +1,198 @@
+<!-- This is the editor for the website -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cherry OneDev</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+
+<body class="select-none">
+  <div id="header"
+    class="text-xl p-4 bg-black backdrop-blur-sm fixed top-0 left-0 right-0 bg-opacity-0 z-20 bg-opacity-80">
+    <div class="flex">
+      <div class="w-full pr-auto">
+        <img src="/Cherry OneDev Icons/Cherry OneDev-logos_white.png" class="max-h-14 cursor-pointer"
+          onclick="window.location = '/'" />
+      </div>
+      <div id="menuButton"
+        class="pl-auto grid gap-2 hover:gap-3 transition-all duration-300 w-10 my-auto cursor-pointer"
+        onclick="openMenu()">
+        <div class="bg-white rounded-full h-1 w-full"></div>
+        <div class="bg-white rounded-full h-1 w-full"></div>
+        <div class="bg-white rounded-full h-1 w-full"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="menu"
+    class="fixed top-0 bottom-0 -right-full transition-all duration-300 p-4 bg-gray-700 w-fit z-20 text-white bg-opacity-80 backdrop-blur-sm">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="w-12 h-12 cursor-pointer hover:bg-slate-800 hover:text-indigo-500 transition-all rounded-xl"
+      onclick="closeMenu()">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+    <div class="w-full mt-8 grid text-gray-400 text-3xl gap-4">
+      <a href="/about-us.html"
+        class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">About
+        Us</a>
+      <a href="/contact-us.html"
+        class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">Contact
+        Us</a>
+      <a
+        class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">Send
+        a Donation</a>
+    </div>
+  </div>
+  <div id="editor" class="hidden h-screen pt-24 bg-slate-900 p-6 flex lg:flex-row md:flex-row flex-col gap-4">
+    <object id="preview" class="w-full rounded-xl border-2 border-gray-300 shadow-lg bg-black"></object>
+    <div class="w-full rounded-xl border-2 border-gray-300 p-4 bg-black text-white overflow-y-auto shadow-lg">
+      <h1 class="font-bold text-4xl border-b-4 border-indigo-500 w-fit mx-auto mb-4">Editor</h1>
+      <div class="grid grid-cols-2 gap-6 mt-4">
+        <button onclick="window.open(fileUrl);"
+          class="p-2 rounded-xl bg-cyan-500 text-white font-bold text-xl hover:scale-110 transition-all duration-300 w-fit mx-auto">Open
+          preview in a new tab</button>
+        <button onclick="downloadFile();"
+          class="p-2 rounded-xl bg-cyan-500 text-white font-bold text-xl hover:scale-110 transition-all duration-300 w-fit mx-auto">Download</button>
+      </div>
+      <br>
+      <hr class="bg-blue-500 rounded-full border-none h-2">
+      <br>
+      <label class="border-b-2 border-cyan-500 mb-2 text-4xl w-fit mx-auto">Header</label>
+      <br>
+      <br>
+      <div class="grid grid-cols-3 text-2xl">
+        <div class="grid text-center">
+          <input id="header" name="header" type="checkbox" class="bg-cyan-500 border-none rounded-xl p-2" checked />
+          <label for="header" class="mt-4">Header</label>
+        </div>
+        <div class="grid text-center border-x-2 border-indigo-500">
+          <input id="headerColor" name="headerColor" type="color" value="#ffffff"
+            class="bg-cyan-500 border-none rounded-xl p-1 mx-auto" />
+          <label for="headerColor" class="mt-4">Header Color</label>
+        </div>
+        <div class="grid text-center">
+          <select id="headerPosition" name="headerPosition"
+            class="bg-cyan-500 border-none rounded-xl p-1 text-white font-bold mx-auto text-center">
+            <option value="left">Left</option>
+            <option value="center" selected>Center</option>
+            <option value="right">Right</option>
+          </select>
+          <label for="headerPosition" class="mt-4">Header Position</label>
+        </div>
+      </div>
+      <br>
+      <hr class="bg-blue-500 rounded-full border-none h-2">
+      <br>
+      <label class="border-b-2 border-cyan-500 mb-2 text-4xl w-fit mx-auto">Background Image</label>
+      <br>
+      <br>
+      <input id="bgimage" name="bgimage" type="file" class="bg-cyan-500 text-white text-2xl p-2 w-full rounded-xl"
+        accept="image/*" />
+      <br>
+      <br>
+      <input id="parallax" name="parallax" type="checkbox" />
+      <label for="parallax">Parallax Effect</label>
+      <br>
+      <br>
+      <button onclick="$('#bgimage')[0].value = ''; removeBg()"
+        class="p-2 rounded-xl bg-cyan-500 text-white font-bold text-xl hover:scale-110 transition-all duration-300">Remove
+        Background</button>
+      <br>
+      <br>
+      <hr class="bg-blue-500 rounded-full border-none h-2">
+      <br>
+      <label class="border-b-2 border-cyan-500 mb-2 text-4xl w-fit mx-auto">Body</label>
+      <br>
+      <br>
+      <div class="grid grid-cols-3 text-2xl">
+        <div class="grid text-center">
+          <input id="body" name="body" type="checkbox" class="bg-cyan-500 border-none rounded-xl p-2" checked />
+          <label for="body" class="mt-4">Body</label>
+        </div>
+        <div class="grid text-center border-x-2 border-indigo-500">
+          <input id="bodyColor" name="bodyColor" type="color" value="#ffffff"
+            class="bg-cyan-500 border-none rounded-xl p-1 mx-auto" />
+          <label for="bodyColor" class="mt-4">Body Color</label>
+        </div>
+        <div class="grid text-center">
+          <select id="bodyPosition" name="bodyPosition"
+            class="bg-cyan-500 border-none rounded-xl p-1 text-white font-bold mx-auto text-center">
+            <option value="left" class="transition-all">Left</option>
+            <option value="center" class="transition-all" selected>Center</option>
+            <option value="right" class="transition-all">Right</option>
+          </select>
+          <label for="bodyPosition" class="mt-4">Body Position</label>
+        </div>
+      </div>
+      <br>
+      <label class="border-b-2 border-indigo-500 mb-2 text-2xl w-fit mx-auto">Body Text</label>
+      <br>
+      <textarea id="bodyText" placeholder="Enter text here"
+        class="w-full resize-none h-48 border-2 rounded-xl p-2 mt-4 bg-slate-900 text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+      <div class="grid grid-cols-3 text-2xl mt-6">
+        <div class="grid text-center">
+          <input id="textColor" name="textColor" type="color" value="#000000"
+            class="bg-cyan-500 border-none rounded-xl p-1 mx-auto" />
+          <label for="textColor" class="mt-4">Text Color</label>
+        </div>
+        <div class="grid text-center border-x-2 border-indigo-500">
+          <select id="textSize" name="textSize"
+            class="bg-cyan-500 border-none rounded-xl p-1 text-white font-bold mx-auto text-center">
+            <option value="text-sm">Small</option>
+            <option value="text-md">Medium</option>
+            <option value="text-lg" selected>Large</option>
+            <option value="text-xl">XL</option>
+            <option value="text-2xl">2XL</option>
+            <option value="text-3xl">3XL</option>
+            <option value="text-4xl">4XL</option>
+            <option value="text-5xl">5XL</option>
+            <option value="text-6xl">6XL</option>
+            <option value="text-7xl">7XL</option>
+            <option value="text-8xl">8XL</option>
+            <option value="text-9xl">9XL</option>
+          </select>
+          <label for="textSize" class="mt-4">Text Size</label>
+        </div>
+        <div class="grid text-center">
+          <select id="font" name="font"
+            class="bg-cyan-500 border-none rounded-xl p-1 text-white font-bold mx-auto text-center">
+            <option value="font-sans" selected>Sans</option>
+            <option value="font-serif">Serif</option>
+            <option value="font-mono">Mono</option>
+          </select>
+          <label for="font" class="mt-4">Font Style</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="choice"
+    class="fixed top-0 left-0 right-0 bottom-0 transition-all duration-300 z-0 flex items-center justify-center bg-blue-500">
+    <div id="container" class="grid transition-all duration-700 ease-in-out w-full text-center opacity-0">
+      <div id="content" class="mt-12 text-white text-5xl font-bold"></div>
+      <input id="settings" type="text" placeholder="Title"
+        class="p-2 rounded-xl border-2 border-gray-200 bg-white h-12 min-w-1/2 text-center mt-12 mx-auto text-xl"
+        onkeydown="if (event.keyCode == 13) { addTitle(this.value); return false; }" autofocus>
+      <button id="submit"
+        class="hidden bg-cyan-500 mt-12 p-3 rounded-xl transition-all duration-300 text-white font-bold text-2xl w-fit mx-auto hover:scale-110"
+        onclick="addTheme()">Submit</button>
+    </div>
+  </div>
+  <script src="website-editor.js"></script>
+  <script src="../menu.js"></script>
+  <script>
+    setTimeout(openSettingsForApp, 10);
+  </script>
+  <style>
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+  </style>
+</body>
+
+</html>

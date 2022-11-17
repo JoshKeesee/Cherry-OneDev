@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Cherry OneDev</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.13.1/ace.js" integrity="sha512-IQmiIneKUJhTJElpHOlsrb3jpF7r54AzhCTi7BTDLiBVg0f7mrEqWVCmOeoqKv5hDdyf3rbbxBUgYf4u3O/QcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+</head>
+
+<body class="bg-slate-900 select-none">
+  <div id="pageContent">
+    <div id="header"
+      class="text-xl p-4 bg-black backdrop-blur-sm fixed top-0 left-0 right-0 bg-opacity-0 z-20 bg-opacity-80">
+      <div class="flex">
+        <div class="w-full pr-auto">
+          <img src="/Cherry OneDev Icons/Cherry OneDev-logos_white.png" class="max-h-14 cursor-pointer"
+            onclick="window.location = '/'" />
+        </div>
+        <div id="menuButton"
+          class="pl-auto grid gap-2 hover:gap-3 transition-all duration-300 w-10 my-auto cursor-pointer"
+          onclick="openMenu()">
+          <div class="bg-white rounded-full h-1 w-full"></div>
+          <div class="bg-white rounded-full h-1 w-full"></div>
+          <div class="bg-white rounded-full h-1 w-full"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="menu"
+      class="fixed top-0 bottom-0 -right-full transition-all duration-300 p-4 bg-gray-700 w-fit z-20 text-white bg-opacity-80 backdrop-blur-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-12 h-12 cursor-pointer hover:bg-slate-800 hover:text-indigo-500 transition-all rounded-xl"
+        onclick="closeMenu()">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+      <div class="w-full mt-8 grid text-gray-400 text-3xl gap-4">
+        <a href="/about-us.html"
+          class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">About
+          Us</a>
+        <a href="/contact-us.html"
+          class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">Contact
+          Us</a>
+        <a
+          class="border-b-4 border-gray-400 hover:bg-slate-800 hover:text-white hover:border-indigo-500 transition-all cursor-pointer p-2 text-center">Send
+          a Donation</a>
+      </div>
+    </div>
+
+    <div class="h-screen overflow-y-visible">
+      <div id="container"
+        class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 transition-all duration-300 h-full overflow-y-hidden pb-12 px-8 pt-28">
+        <div id="app" onclick="openProject(this.id)"
+          class="overflow-hidden transition-all font-bold text-3xl rounded-xl shadow-md cursor-pointer h-full duration-300 border-4 border-slate-800 hover:shadow-red-500 hover:bg-red-500 transform hover:-translate-y-2 hover:shadow-lg">
+          <h1 class="rounded-bl-full rounded-tr-full text-white bg-slate-800 p-1 h-full flex items-center justify-center z-10 hover:rounded-br-full hover:rounded-tl-full hover:rounded-bl-none hover:rounded-tr-none transition-all duration-300">Make an
+            app</h1>
+        </div>
+
+        <div id="website" onclick="openProject(this.id)"
+          class="overflow-hidden transition-all font-bold text-3xl rounded-xl shadow-md cursor-pointer h-full duration-300 border-4 border-slate-800 hover:shadow-green-500 hover:bg-green-500 transform hover:-translate-y-2 hover:shadow-lg">
+          <h1 class="rounded-bl-full rounded-tr-full text-white bg-slate-800 p-1 h-full flex items-center justify-center z-10 hover:rounded-br-full hover:rounded-tl-full hover:rounded-bl-none hover:rounded-tr-none transition-all duration-300">Make a
+            website</h1>
+        </div>
+
+        <div id="project" onclick="openProject(this.id)"
+          class="overflow-hidden transition-all font-bold text-3xl rounded-xl shadow-md cursor-pointer h-full duration-300 border-4 border-slate-800 hover:shadow-blue-500 hover:bg-blue-500 transform hover:-translate-y-2 hover:shadow-lg">
+          <h1 class="rounded-bl-full rounded-tr-full text-white bg-slate-800 p-1 h-full flex items-center justify-center z-10 hover:rounded-br-full hover:rounded-tl-full hover:rounded-bl-none hover:rounded-tr-none transition-all duration-300">Code it
+            yourself</h1>
+        </div>
+      </div>
+    </div>
+    <div id="choice"
+      class="fixed top-0 left-0 right-0 bottom-0 transition-all duration-300 opacity-0 -z-10 flex items-center justify-center bg-blue-500">
+      <div class="w-20 h-20 rounded-full border-8 border-t-indigo-500 animate-spin mx-auto"></div>
+    </div>
+    <script src="script.js"></script>
+    <script src="menu.js"></script>
+  </div>
+</body>
+
+</html>
