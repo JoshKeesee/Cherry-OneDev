@@ -79,7 +79,6 @@ document.getElementById("bgimage").onchange = (event) => {
 }
 
 document.getElementById("headerBar").onchange = (event) => {
-  alert("hello!");
   if (event.target.checked) {
     header = '<div class="bg-[' + headerColor + '] border-b-4 ' + 'border-[' + theme + ']' + ' font-bold text-' + themeIsLight(headerColor) + ' fixed top-0 left-0 right-0 p-4 text-' + headerPosition + ' text-4xl shadow-lg select-none z-20">' + title + '</div>';
     container = '<div class="bg-gray-100 min-h-screen mt-16 pt-2">';
