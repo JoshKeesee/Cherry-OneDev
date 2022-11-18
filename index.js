@@ -31,9 +31,20 @@ setInterval(changeBgColor, 0);
 function changeBgColor() {
   var pos = $(window).scrollTop();
   var content = $("#content");
-  if (pos < 500) {
-    content.removeClass("bg-green-500").addClass("bg-slate-900");
-  } else if (pos > 500) {
-    content.removeClass("bg-slate-900").addClass("bg-green-500");
+  
+  if (pos < 350) {
+    $("#card-1").removeClass("shadow-xl").addClass("shadow-sm").removeClass("shadow-red-500").removeClass("-translate-y-2").addClass("bg-black").removeClass("bg-red-500");
+    setTimeout('$("#card-2").removeClass("shadow-xl").addClass("shadow-sm").removeClass("shadow-green-500").removeClass("-translate-y-2").addClass("bg-black").removeClass("bg-green-500")', 200);
+    setTimeout('$("#card-3").removeClass("shadow-xl").addClass("shadow-sm").removeClass("shadow-blue-500").removeClass("-translate-y-2").addClass("bg-black").removeClass("bg-blue-500")', 400);
+  } else if (pos > 350) {
+    $("#card-1").addClass("shadow-xl").removeClass("shadow-sm").addClass("shadow-red-500").addClass("-translate-y-2").addClass("bg-red-500").removeClass("bg-black");
+    setTimeout('$("#card-2").addClass("shadow-xl").removeClass("shadow-sm").addClass("shadow-green-500").addClass("-translate-y-2").addClass("bg-green-500").removeClass("bg-black")', 200);
+    setTimeout('$("#card-3").addClass("shadow-xl").removeClass("shadow-sm").addClass("shadow-blue-500").addClass("-translate-y-2").addClass("bg-blue-500").removeClass("bg-black")', 400);
+  }
+  
+  if (pos < 1000) {
+    content.removeClass("bg-indigo-500").addClass("bg-slate-900");
+  } else if (pos > 1000) {
+    content.removeClass("bg-slate-900").addClass("bg-indigo-500");
   }
 }
