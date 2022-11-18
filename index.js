@@ -31,9 +31,9 @@ setInterval(changeBgColor, 0);
 function changeBgColor() {
   var pos = $(window).scrollTop();
   var content = $("#content");
-  if (pos < 200) {
+  if (pos < 500) {
     content.removeClass("bg-green-500").addClass("bg-slate-900");
-  } else if (pos > 200) {
+  } else if (pos > 500) {
     content.removeClass("bg-slate-900").addClass("bg-green-500");
   }
 }
